@@ -3,9 +3,9 @@
 独立静态官网：现代、克制的产品展示，16 种语言的首页、隐私政策与用户条款。
 使用真实 App 截图与 App 生成的语音素材，不依赖远程字体、CDN、分析脚本、Cookie 或运行时框架。
 
-官网地址：https://liuxiaodong008008.github.io/pdf-speaker-website/
+官网地址：https://yikestudio.github.io/pdf-speaker-website/
 
-独立仓库：https://github.com/liuxiaodong008008/pdf-speaker-website
+独立仓库：https://github.com/yikestudio/pdf-speaker-website
 
 ## 本地运行
 
