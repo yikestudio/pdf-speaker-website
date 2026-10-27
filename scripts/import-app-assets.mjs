@@ -7,7 +7,7 @@ import { locales } from '../src/locales.mjs';
 const root = resolve(import.meta.dirname, '..');
 const source = resolve(process.argv[2] ?? join(root, '../ListenToPDF/StoreAssets'));
 const captures = join(source, 'WebsiteCaptures');
-const captureMetadata = (await Promise.all(['mac', 'iphone', 'ipad'].map(async platform =>
+const captureMetadata = (await Promise.all(['mac', 'iphone', 'duo', 'ipad'].map(async platform =>
   JSON.parse(await readFile(join(captures, `${platform}.json`), 'utf8'))))).flat();
 const assets = join(root, 'public/assets');
 await mkdir(assets, { recursive: true });
@@ -23,7 +23,9 @@ const keys = {
   localTitle: '文档留在你的设备上',
   localBody: '本地处理 PDF 与语音，无需注册账号。',
   privacy: '隐私政策',
-  terms: '用户条款'
+  terms: '用户条款',
+  voiceView: '声音',
+  regionView: '朗读区域'
 };
 const copy = {};
 const provenance = [];
@@ -36,7 +38,18 @@ const images = [
   ['ipad', '05-library', 'ipad-library', 1000],
   ['ipad', '03-listening', 'ipad-listening', 1000],
   ['iphone', '05-library', 'iphone-library', 660],
-  ['iphone', '02-document', 'iphone-document', 660]
+  ['iphone', '02-document', 'iphone-document', 660],
+  ['mac', '04-voices', 'mac-voices', 1600],
+  ['ipad', '04-voices', 'ipad-voices', 1000],
+  ['iphone', '04-voices', 'iphone-voices', 660],
+  ['duo', '05-library', 'duo-library', 1400],
+  ['duo', '02-document', 'duo-document', 1400],
+  ['duo', '03-listening', 'duo-listening', 1400],
+  ['duo', '04-voices', 'duo-voices', 1400],
+  ['iphone', '06-region', 'iphone-region', 660],
+  ['duo', '06-region', 'duo-region', 1400],
+  ['ipad', '06-region', 'ipad-region', 1000],
+  ['mac', '06-region', 'mac-region', 1600]
 ];
 for (const [locale] of locales) {
   const data = JSON.parse(await readFile(join(source, `Localization/${locale}.json`), 'utf8'));
@@ -52,13 +65,16 @@ for (const [locale] of locales) {
     const relative = `Raw/${platform}/${locale}/${file}.png`;
     const input = join(captures, relative);
     const capture = captureMetadata.find(item => item.source === relative && item.locale === locale);
-    const sourceHash = createHash('sha256').update(await readFile(input)).digest('hex');
+    const sourceData = await readFile(input);
+    const sourceHash = createHash('sha256').update(sourceData).digest('hex');
     if (!capture || capture.documentLocale !== locale || capture.sha256 !== sourceHash) {
       throw new Error(`Capture language or provenance mismatch: ${relative}`);
     }
     const output = join(assets, locale, `${name}.webp`);
     execFileSync('cwebp', ['-quiet', '-q', '86', '-resize', String(width), '0', input, '-o', output]);
     provenance.push({ ...capture, locale, source: `WebsiteCaptures/${relative}`, output: `${locale}/${name}.webp`,
+      // cwebp rounds the inferred dimension up when the other dimension is zero.
+      width, height: Math.ceil(width * sourceData.readUInt32BE(20) / sourceData.readUInt32BE(16)),
       webpSHA256: createHash('sha256').update(await readFile(output)).digest('hex') });
   }
 }

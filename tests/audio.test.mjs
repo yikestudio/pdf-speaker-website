@@ -55,13 +55,13 @@ test('83 real recordings have hashes, nonempty MP3 audio, measured waveforms and
   assert.ok(bytes < 12_000_000, `${bytes} audio bytes`);
 });
 
-test('each hero shows all three platforms and explains local offline listening', async () => {
+test('each hero shows all four devices and explains local offline listening', async () => {
   for (const [code] of locales) {
     const html = await readFile(join(out, code, 'index.html'), 'utf8');
     const hero = html.match(/<section class="hero wrap">([\s\S]*?)<\/section>/)?.[1];
     assert.ok(hero, code);
-    assert.equal([...hero.matchAll(/<img /g)].length, 3, code);
-    for (const device of ['mac', 'ipad', 'iphone']) {
+    assert.equal([...hero.matchAll(/<img /g)].length, 4, code);
+    for (const device of ['mac', 'ipad', 'iphone', 'duo-listening']) {
       assert.ok(hero.includes(`assets/${code}/${device}.webp`), `${code}: ${device}`);
     }
     assert.ok(hero.includes(escape(showcase[code].offlineTitle)), code);

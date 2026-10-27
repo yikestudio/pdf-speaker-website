@@ -29,7 +29,7 @@ test('all 16 locales have complete, nonempty marketing and legal content', () =>
     for (const sections of Object.values(legal[code])) {
       for (const section of sections) assert.ok(section.length === 2 && section.every(text => text.trim().length > 0), code);
     }
-    assert.equal(app[code].headlines.length, 5, code);
+    assert.equal(app[code].headlines.length, 6, code);
     if (code !== 'en') {
       assert.notEqual(siteCopy[code].introTitle, siteCopy.en.introTitle);
       assert.notEqual(legal[code].terms[0][1], legal.en.terms[0][1]);
@@ -129,9 +129,9 @@ test('language switch retains the current legal page, with no English fallback',
   }
 });
 
-test('all 144 screenshots are real imported assets and stay within site budget', async () => {
+test('all 320 screenshots are real imported assets and stay within site budget', async () => {
   const assets = JSON.parse(await readFile(join(out, 'assets/provenance.json'), 'utf8'));
-  assert.equal(assets.length, 144);
+  assert.equal(assets.length, 320);
   let total = 0;
   for (const asset of assets) {
     assert.match(asset.sha256, /^[a-f0-9]{64}$/);
@@ -146,33 +146,48 @@ test('all 144 screenshots are real imported assets and stay within site budget',
     total += size;
   }
   for (const name of ['library', 'mac', 'mac-listening', 'ipad-library', 'ipad', 'ipad-listening',
-    'iphone-library', 'iphone-document', 'iphone']) {
+    'iphone-library', 'iphone-document', 'iphone', 'iphone-voices', 'ipad-voices', 'mac-voices',
+    'duo-library', 'duo-document', 'duo-listening', 'duo-voices',
+    'iphone-region', 'duo-region', 'ipad-region', 'mac-region']) {
     const images = assets.filter(asset => asset.output.endsWith(`/${name}.webp`));
     assert.equal(new Set(images.map(asset => asset.sha256)).size, 16, `${name}: distinct localized captures`);
   }
-  assert.ok(total < 24_000_000, `${total} bytes`);
+  assert.ok(total < 40_000_000, `${total} bytes`);
 });
 
-test('every platform presents home, document and listening captures in each locale', () => {
+test('all four devices present five scenes including voice selection and reading-area editing', () => {
   const files = {
-    mac: ['library', 'mac', 'mac-listening'],
-    ipad: ['ipad-library', 'ipad', 'ipad-listening'],
-    iphone: ['iphone-library', 'iphone-document', 'iphone']
+    mac: ['library', 'mac', 'mac-listening', 'mac-voices', 'mac-region'],
+    ipad: ['ipad-library', 'ipad', 'ipad-listening', 'ipad-voices', 'ipad-region'],
+    iphone: ['iphone-library', 'iphone-document', 'iphone', 'iphone-voices', 'iphone-region'],
+    duo: ['duo-library', 'duo-document', 'duo-listening', 'duo-voices', 'duo-region']
   };
   for (const [code] of locales) {
     const html = pages.get(`${code}/index.html`);
     for (const [platform, images] of Object.entries(files)) {
       const panel = html.match(new RegExp(`<section class="device-panel ${platform}"[\\s\\S]*?</section>`))?.[0];
       assert.ok(panel, `${code}/${platform}`);
-      assert.equal([...panel.matchAll(/<img /g)].length, 3);
+      assert.equal([...panel.matchAll(/<img /g)].length, 5);
       assert.deepEqual([...panel.matchAll(/data-view="([^"]+)"/g)].map(match => match[1]),
-        ['library', 'document', 'listening']);
+        ['library', 'document', 'listening', 'voices', 'region']);
       for (const file of images) {
         assert.ok(panel.includes(`href="../assets/${code}/${file}.webp"`));
         assert.ok(panel.includes(`src="../assets/${code}/${file}.webp"`));
       }
-      assert.equal([...panel.matchAll(/target="_blank" rel="noopener"/g)].length, 3);
+      assert.equal([...panel.matchAll(/target="_blank" rel="noopener"/g)].length, 5);
     }
+  }
+});
+
+test('every locale explains selectable reading areas with a real localized editor screenshot', () => {
+  for (const [code] of locales) {
+    const html = pages.get(`${code}/index.html`);
+    const section = html.match(/<section class="section wrap region-feature"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(section, code);
+    assert.ok(section.includes(escape(app[code].headlines[5])), code);
+    assert.ok(section.includes(escape(app[code].captions[5])), code);
+    assert.ok(section.includes(`assets/${code}/duo-region.webp`), code);
+    assert.ok(!html.includes('04-navigation'), code);
   }
 });
 
@@ -202,7 +217,7 @@ test('browser enhancement is progressive, with no storage or tracking', async ()
   assert.match(js, /Escape/);
   for (const [code] of locales) {
     const html = pages.get(`${code}/index.html`);
-    assert.equal((html.match(/data-panel/g) ?? []).length, 3);
+    assert.equal((html.match(/data-panel/g) ?? []).length, 4);
     assert.ok(!/data-panel[^>]*hidden/.test(html));
     assert.ok(html.includes('<details>'));
   }

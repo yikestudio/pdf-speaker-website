@@ -5,12 +5,12 @@ import { createHash } from 'node:crypto';
 import { locales } from '../src/locales.mjs';
 
 const [platform, ...results] = process.argv.slice(2);
-if (!['mac', 'iphone', 'ipad'].includes(platform) || !results.length) {
-  throw new Error('Usage: node scripts/import-app-captures.mjs mac|iphone|ipad result.xcresult [...]');
+if (!['mac', 'iphone', 'duo', 'ipad'].includes(platform) || !results.length) {
+  throw new Error('Usage: node scripts/import-app-captures.mjs mac|iphone|duo|ipad result.xcresult [...]');
 }
 const app = resolve(import.meta.dirname, '../../ListenToPDF');
 const output = join(app, 'StoreAssets/WebsiteCaptures');
-const names = ['01-hero', '02-document', '03-listening', '04-navigation', '05-library'];
+const names = ['01-hero', '02-document', '03-listening', '04-voices', '05-library', '06-region'];
 const languages = { en: 'en-US', 'zh-Hans': 'zh-CN', 'zh-Hant': 'zh-Hant', ja: 'ja-JP',
   ko: 'ko-KR', fr: 'fr-FR', de: 'de-DE', es: 'es-ES', 'pt-BR': 'pt-BR', it: 'it-IT',
   ru: 'ru-RU', ar: 'ar-SA', hi: 'hi-IN', id: 'id-ID', tr: 'tr-TR', vi: 'vi-VN' };
@@ -18,6 +18,7 @@ const books = JSON.parse(await readFile(join(app, 'ListenToPDF/SampleBooks/index
 const traditional = JSON.parse(await readFile(join(app, '.build/WebsiteCaptures/TraditionalSample/index.json'), 'utf8'))[0];
 const sha256 = data => createHash('sha256').update(data).digest('hex');
 const captures = new Map();
+const devices = { mac: /Mac/, iphone: /^iPhone(?! Duo)/, duo: /^iPhone Duo/, ipad: /^iPad/ };
 await mkdir(output, { recursive: true });
 for (const result of results) {
   const temporary = await mkdtemp(join(output, 'attachments-'));
@@ -26,7 +27,7 @@ for (const result of results) {
       { stdio: 'pipe', maxBuffer: 8 * 1024 * 1024 });
     const tests = JSON.parse(await readFile(join(temporary, 'manifest.json'), 'utf8'));
     for (const item of tests.flatMap(test => test.attachments)) {
-      if (item.isAssociatedWithFailure) continue;
+      if (item.isAssociatedWithFailure || !devices[platform].test(item.deviceName)) continue;
       for (const [locale] of locales) for (const name of names) {
         if (!item.suggestedHumanReadableName.startsWith(`Website-${locale}-${name}_`)) continue;
         if (basename(item.exportedFileName) !== item.exportedFileName) throw new Error('Unsafe attachment path.');
@@ -35,6 +36,10 @@ for (const result of results) {
         const data = await readFile(join(temporary, item.exportedFileName));
         if (!data.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) {
           throw new Error(`Not a PNG capture: ${key}`);
+        }
+        const width = data.readUInt32BE(16), height = data.readUInt32BE(20);
+        if (width < 300 || height < 300 || (platform === 'duo' && width <= height)) {
+          throw new Error(`Invalid capture dimensions/orientation: ${platform}/${key} ${width}x${height}`);
         }
         captures.set(key, { data, timestamp: item.timestamp, resultBundle: basename(result),
           attachment: item.suggestedHumanReadableName, device: item.deviceName });
@@ -62,6 +67,9 @@ for (const [locale] of locales) {
     await writeFile(join(output, source), data);
     provenance.push({ locale, source, documentLocale: locale, documentSource, documentSHA256,
       documentTitle: book.title, chapterTitle: book.chapterTitles[0], sha256: sha256(data), ...capture });
+  }
+  for (const obsolete of ['04-navigation', '06-voices']) {
+    await rm(join(output, 'Raw', platform, locale, `${obsolete}.png`), { force: true });
   }
 }
 await writeFile(join(output, `${platform}.json`), `${JSON.stringify(provenance, null, 2)}\n`);

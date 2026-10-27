@@ -12,19 +12,23 @@
     "localBody": "PDFs and speech are processed locally. No account needed.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
+    "voiceView": "Voice",
+    "regionView": "Reading region",
     "headlines": [
       "Your PDFs, ready to listen",
       "Hear it. Follow the original.",
       "One sentence. Your full attention.",
-      "Find the chapter. Save your place.",
-      "Your shelf. Right where you left off."
+      "Our engine. A world of voices.",
+      "Your shelf. Right where you left off.",
+      "Just the text you want to hear."
     ],
     "captions": [
       "Open a PDF and make room for listening in your day.",
       "Follow spoken text highlighted on the original page.",
       "A large current sentence and adjustable speed keep listening focused.",
-      "Use the document’s outline when provided, or add your own bookmarks.",
-      "Keep PDFs and reading progress locally on the same device."
+      "Our high-quality speech engine brings your PDFs to life with a variety of voice styles.",
+      "Keep PDFs and reading progress locally on the same device.",
+      "Select the body text to leave headers, footers and page numbers out of narration. Optionally show only the selected area; mirror it on even pages for facing-page layouts."
     ],
     "description": "Give your PDFs a voice. Follow highlighted text, focus on one sentence, and pick up where you left off—all with local reading and offline speech."
   },
@@ -41,19 +45,23 @@
     "localBody": "本地处理 PDF 与语音，无需注册账号。",
     "privacy": "隐私政策",
     "terms": "用户条款",
+    "voiceView": "声音",
+    "regionView": "朗读区域",
     "headlines": [
       "让 PDF，开口说话。",
       "听到哪句，看到哪句。",
       "让眼睛休息，让故事继续。",
-      "好内容，随时回到。",
-      "下一次，从这里继续。"
+      "自研引擎，多样好声音",
+      "下一次，从这里继续。",
+      "只听正文，跳过页眉页脚。"
     ],
     "captions": [
       "书籍、讲义、报告，都能随身听读。",
       "原文高亮，让声音与文字相遇。",
       "切换听书模式，专注眼前这一句。",
-      "目录与页书签，帮你找回需要的段落。",
-      "本地书库保存文档与朗读进度。"
+      "高质量自研语音引擎，多种声音风格，让 PDF 听起来更动人。",
+      "本地书库保存文档与朗读进度。",
+      "手动框选要朗读的正文，把页眉、页脚和页码留在框外。可让文档仅显示选区，也支持偶数页左右镜像，适应双面排版。"
     ],
     "description": "把书籍、讲义和报告变成随身听读。原文高亮、专注听书、本机文字识别，让眼睛休息，也不错过下一句。"
   },
@@ -70,19 +78,23 @@
     "localBody": "在裝置上處理 PDF 與語音，無需註冊帳號。",
     "privacy": "隱私權政策",
     "terms": "使用條款",
+    "voiceView": "聲音",
+    "regionView": "朗讀範圍",
     "headlines": [
       "讓你的 PDF，開口說話",
       "聽到哪裡，原文跟到哪裡",
       "專注一句，沉浸聆聽",
-      "章節有路徑，重點有書籤",
-      "留在書架，接著上次讀"
+      "自研引擎，多樣好聲音",
+      "留在書架，接著上次讀",
+      "只聽正文，略過頁首頁尾。"
     ],
     "captions": [
       "開啟報告、文章或書籍，把閱讀帶進日常聆聽時光。",
       "保留原始頁面，以反白文字跟隨朗讀進度。",
       "大字顯示目前句子，依自己的步調調整速度。",
-      "使用文件提供的目錄，或加入書籤，回到重要頁面。",
-      "PDF 與閱讀進度留在同一裝置，下次繼續讀。"
+      "高品質自研語音引擎，多種聲音風格，讓 PDF 聽起來更動人。",
+      "PDF 與閱讀進度留在同一裝置，下次繼續讀。",
+      "手動框選要朗讀的正文，將頁首、頁尾與頁碼留在框外。可讓文件僅顯示選取範圍，也支援偶數頁左右鏡像，適應雙面排版。"
     ],
     "description": "把報告、文章與書籍，變成日常可以聆聽的內容。跟著原文反白閱讀，或專注眼前一句；文件與朗讀留在裝置上，離線也能聽。"
   },
@@ -99,19 +111,23 @@
     "localBody": "PDFと音声はデバイス上で処理。アカウントは不要です。",
     "privacy": "プライバシーポリシー",
     "terms": "利用規約",
+    "voiceView": "音声",
+    "regionView": "読み上げ範囲",
     "headlines": [
       "いつものPDFを、聴く時間に",
       "原文を見ながら、耳で読む",
       "今の一文に、集中する",
-      "章へ移動。大切なページを保存。",
-      "本棚から、読みかけの続きへ"
+      "独自エンジンで、多彩な声を",
+      "本棚から、読みかけの続きへ",
+      "聴きたい本文だけを。"
     ],
     "captions": [
       "PDFを開いて、資料や本を自分のペースで聴こう。",
       "元のページで、読み上げ中のテキストをハイライト。",
       "大きな一文と速度調整で、聴きやすいリズムに。",
-      "書類にある目次を使い、気になるページにはブックマーク。",
-      "PDFと読書の進捗を、同じデバイスに保存します。"
+      "高品質な独自音声エンジンと多彩な声で、PDFを聴く楽しさが広がります。",
+      "PDFと読書の進捗を、同じデバイスに保存します。",
+      "本文を手動で囲み、ヘッダー・フッター・ページ番号を読み上げ範囲の外へ。選択範囲だけの表示や、見開きに合わせた偶数ページの左右反転にも対応。"
     ],
     "description": "読みかけのPDFを、耳でも先へ。原文のハイライトを追いながら読む。大きな一文に集中して聴く。書類をアップロードせず、オフラインで読み上げます。"
   },
@@ -128,19 +144,23 @@
     "localBody": "PDF와 음성은 기기에서 처리됩니다. 계정이 필요하지 않습니다.",
     "privacy": "개인정보 처리방침",
     "terms": "이용 약관",
+    "voiceView": "음성",
+    "regionView": "읽기 영역",
     "headlines": [
       "PDF, 이제 귀로도 읽으세요",
       "원문을 따라, 소리와 함께",
       "지금 이 문장에 집중",
-      "목차로 찾고 책갈피로 기억",
-      "내 책장에서, 읽던 곳부터"
+      "자체 엔진으로 만나는 다채로운 목소리",
+      "내 책장에서, 읽던 곳부터",
+      "머리말과 꼬리말 없이, 본문만."
     ],
     "captions": [
       "PDF를 열고 일상 속 빈 시간을 듣는 시간으로 바꾸세요.",
       "원래 페이지에서 읽는 텍스트가 강조 표시됩니다.",
       "크게 표시되는 현재 문장과 속도 조절로 편안하게 들어보세요.",
-      "문서에 포함된 목차를 이용하고 중요한 페이지에 책갈피를 추가하세요.",
-      "PDF와 읽기 진행 상황을 같은 기기에 보관합니다."
+      "고품질 자체 음성 엔진과 다양한 목소리로 PDF를 더욱 생생하게 들어 보세요.",
+      "PDF와 읽기 진행 상황을 같은 기기에 보관합니다.",
+      "읽을 본문을 직접 선택해 머리말, 꼬리말, 쪽 번호를 제외하세요. 선택 영역만 표시하거나 양면 문서에 맞게 짝수 페이지의 영역을 좌우 반전할 수 있습니다."
     ],
     "description": "읽던 PDF를 귀로 이어가세요. 원문의 강조 표시를 따라 읽거나, 크게 표시되는 한 문장에 집중하세요. 문서를 업로드하지 않고 오프라인으로 읽어줍니다."
   },
@@ -157,19 +177,23 @@
     "localBody": "PDF et voix sont traités localement, sans compte.",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d’utilisation",
+    "voiceView": "Voix",
+    "regionView": "Zone de lecture",
     "headlines": [
       "Vos PDF ont une voix",
       "Écoutez sans perdre le fil du texte",
       "Une phrase. Toute votre attention.",
-      "Un chapitre, un signet, un repère",
-      "Votre bibliothèque garde le fil"
+      "Notre moteur, des voix variées",
+      "Votre bibliothèque garde le fil",
+      "Écoutez le texte, pas les marges."
     ],
     "captions": [
       "Ouvrez un PDF et faites une place à l’écoute dans votre journée.",
       "Suivez le texte lu, surligné sur la page originale.",
       "La phrase en grand et la vitesse réglable vous aident à rester dans l’écoute.",
-      "Utilisez le sommaire du document s’il existe, ou ajoutez vos signets.",
-      "Retrouvez vos PDF et votre progression sur le même appareil."
+      "Notre moteur vocal de haute qualité donne vie à vos PDF avec des voix aux styles variés.",
+      "Retrouvez vos PDF et votre progression sur le même appareil.",
+      "Sélectionnez le corps du texte pour exclure en-têtes, pieds de page et numéros de la lecture. Affichez uniquement la zone choisie et inversez-la sur les pages paires si nécessaire."
     ],
     "description": "Écoutez vos PDF hors ligne. Suivez le texte surligné dans la page originale, ou concentrez-vous sur une phrase en grand. Vos documents restent sur l’appareil."
   },
@@ -186,19 +210,23 @@
     "localBody": "PDFs und Sprache werden lokal verarbeitet. Kein Konto nötig.",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
+    "voiceView": "Stimme",
+    "regionView": "Vorlesebereich",
     "headlines": [
       "Deine PDFs bekommen eine Stimme",
       "Zuhören und im Original mitlesen",
       "Ein Satz. Deine ganze Aufmerksamkeit.",
-      "Kapitel finden. Stellen merken.",
-      "Dein Regal. Dein Lesefortschritt."
+      "Eigene Engine, vielfältige Stimmen",
+      "Dein Regal. Dein Lesefortschritt.",
+      "Nur den Text hören, der zählt."
     ],
     "captions": [
       "Öffne eine PDF und schaffe im Alltag Zeit zum Zuhören.",
       "Der vorgelesene Text wird auf der Originalseite markiert.",
       "Der aktuelle Satz in groß, das Tempo nach deinem Gefühl.",
-      "Nutze das Inhaltsverzeichnis, falls vorhanden, und setze eigene Lesezeichen.",
-      "PDFs und Lesefortschritt bleiben lokal auf demselben Gerät."
+      "Unsere hochwertige Sprachengine erweckt deine PDFs mit vielfältigen Stimmen zum Leben.",
+      "PDFs und Lesefortschritt bleiben lokal auf demselben Gerät.",
+      "Wählen Sie den Textbereich und lassen Sie Kopfzeilen, Fußzeilen und Seitenzahlen außerhalb. Auf Wunsch zeigt die Ansicht nur die Auswahl; gerade Seiten können spiegelbildlich zugeschnitten werden."
     ],
     "description": "Höre deine PDFs offline. Folge dem markierten Originaltext oder konzentriere dich auf einen groß dargestellten Satz. Deine Dokumente bleiben auf dem Gerät."
   },
@@ -215,19 +243,23 @@
     "localBody": "Los PDF y la voz se procesan localmente, sin cuenta.",
     "privacy": "Política de privacidad",
     "terms": "Condiciones de uso",
+    "voiceView": "Voz",
+    "regionView": "Zona de lectura",
     "headlines": [
       "Tus PDF tienen voz",
       "Sigue el texto original",
       "Escucha sin distracciones",
-      "Vuelve a lo importante",
-      "Retoma donde lo dejaste"
+      "Motor propio, voces para elegir",
+      "Retoma donde lo dejaste",
+      "Escucha el texto, no los márgenes."
     ],
     "captions": [
       "Lee o escucha a tu ritmo, sin subir tus documentos.",
       "El resaltado acompaña la lectura sobre la página del PDF.",
       "La frase actual en grande para centrarte en cada palabra.",
-      "Navega por capítulos, si hay índice, y guarda marcadores.",
-      "Tu biblioteca local guarda el progreso en este dispositivo."
+      "Nuestro motor de voz de alta calidad da vida a tus PDF con voces de distintos estilos.",
+      "Tu biblioteca local guarda el progreso en este dispositivo.",
+      "Selecciona el cuerpo del texto para excluir encabezados, pies y números de página de la lectura. Puedes mostrar solo el área elegida e invertirla en las páginas pares."
     ],
     "description": "Dale voz a tus PDF, sin subirlos a internet. Sigue el texto resaltado o concéntrate en una frase, a tu ritmo y con tus documentos en el dispositivo."
   },
@@ -244,19 +276,23 @@
     "localBody": "PDFs e voz são processados localmente, sem conta.",
     "privacy": "Política de privacidade",
     "terms": "Termos de uso",
+    "voiceView": "Voz",
+    "regionView": "Área de leitura",
     "headlines": [
       "Seus PDFs ganham voz",
       "Acompanhe o texto original",
       "Ouça com mais foco",
-      "Volte ao que importa",
-      "Continue de onde parou"
+      "Motor próprio, vozes para escolher",
+      "Continue de onde parou",
+      "Ouça o texto, sem cabeçalhos e rodapés."
     ],
     "captions": [
       "Leia ou ouça no seu ritmo, sem enviar seus documentos à internet.",
       "O destaque acompanha a leitura na própria página do PDF.",
       "A frase atual em letras grandes para você se concentrar.",
-      "Navegue pelos capítulos quando houver sumário e salve marcadores.",
-      "Sua biblioteca local guarda o progresso neste dispositivo."
+      "Nosso motor de voz de alta qualidade dá vida aos seus PDFs com diversos estilos de voz.",
+      "Sua biblioteca local guarda o progresso neste dispositivo.",
+      "Selecione o corpo do texto para deixar cabeçalhos, rodapés e números de página fora da leitura. Exiba apenas a área selecionada e espelhe-a nas páginas pares, se necessário."
     ],
     "description": "Dê voz aos seus PDFs sem enviar documentos à internet. Acompanhe o texto destacado ou ouça com a frase atual em evidência, no seu ritmo."
   },
@@ -273,19 +309,23 @@
     "localBody": "PDF e voce vengono elaborati localmente, senza account.",
     "privacy": "Informativa sulla privacy",
     "terms": "Termini di utilizzo",
+    "voiceView": "Voce",
+    "regionView": "Area di lettura",
     "headlines": [
       "I tuoi PDF prendono voce",
       "Segui il testo originale",
       "Ascolta senza distrazioni",
-      "Ritrova ciò che conta",
-      "Riprendi da dove eri rimasto"
+      "Il nostro motore, tante voci",
+      "Riprendi da dove eri rimasto",
+      "Ascolta il testo, non i margini."
     ],
     "captions": [
       "Leggi o ascolta al tuo ritmo, senza caricare online i documenti.",
       "Il testo si evidenzia durante la lettura sulla pagina del PDF.",
       "La frase corrente in grande, per concentrarti su ciò che ascolti.",
-      "Sfoglia i capitoli quando c'è un indice e salva i tuoi segnalibri.",
-      "La libreria locale conserva i progressi su questo dispositivo."
+      "Il nostro motore vocale di alta qualità dà vita ai tuoi PDF con voci di diversi stili.",
+      "La libreria locale conserva i progressi su questo dispositivo.",
+      "Seleziona il corpo del testo per escludere intestazioni, piè di pagina e numeri dalla lettura. Puoi visualizzare solo l’area scelta e specchiarla sulle pagine pari."
     ],
     "description": "Dai voce ai tuoi PDF senza caricarli online. Segui il testo evidenziato o concentrati sulla frase che ascolti, con i documenti sempre sul dispositivo."
   },
@@ -302,19 +342,23 @@
     "localBody": "PDF и речь обрабатываются локально, без аккаунта.",
     "privacy": "Политика конфиденциальности",
     "terms": "Условия использования",
+    "voiceView": "Голос",
+    "regionView": "Область чтения",
     "headlines": [
       "Ваши PDF обретают голос",
       "Следите за исходным текстом",
       "Слушайте, не отвлекаясь",
-      "Возвращайтесь к важному",
-      "Продолжайте с прежнего места"
+      "Собственный движок, богатый выбор голосов",
+      "Продолжайте с прежнего места",
+      "Только текст, без колонтитулов."
     ],
     "captions": [
       "Читайте или слушайте в своём темпе, без загрузки документов на сервер.",
       "Текст подсвечивается во время чтения прямо на странице PDF.",
       "Текущее предложение крупным шрифтом помогает сосредоточиться.",
-      "Переходите по главам, если есть оглавление, и сохраняйте закладки.",
-      "Локальная библиотека хранит прогресс на этом устройстве."
+      "Наш высококачественный речевой движок оживляет PDF с помощью разнообразных голосов.",
+      "Локальная библиотека хранит прогресс на этом устройстве.",
+      "Выделите основной текст, оставив колонтитулы и номера страниц за рамкой озвучивания. Можно показывать только выбранную область и зеркально отражать её на чётных страницах."
     ],
     "description": "Пусть ваши PDF звучат. Следите за подсветкой в документе или слушайте, видя текущее предложение крупным шрифтом. Документы остаются на устройстве."
   },
@@ -331,19 +375,23 @@
     "localBody": "تُعالج ملفات PDF والكلام محليًا، دون حساب.",
     "privacy": "سياسة الخصوصية",
     "terms": "شروط الاستخدام",
+    "voiceView": "الصوت",
+    "regionView": "منطقة القراءة",
     "headlines": [
       "ملفات PDF تستحق أن تُسمع",
       "تابع القراءة في النص الأصلي",
       "كل تركيزك على الجملة الحالية",
-      "فصولك وصفحاتك في متناولك",
-      "عُد إلى حيث توقفت"
+      "محرّكنا الخاص، أصوات متنوعة",
+      "عُد إلى حيث توقفت",
+      "استمع إلى المتن، لا الهوامش."
     ],
     "captions": [
       "اقرأ ملفات PDF أو استمع إليها على iPhone وiPad وMac.",
       "يساعدك التظليل على متابعة النص الذي يُقرأ الآن.",
       "جملة واضحة بحجم كبير، مع تحكم سهل بسرعة القراءة.",
-      "تنقّل عبر الفهرس عند توفره، واحفظ الصفحات بإشارات مرجعية.",
-      "رف محلي يحفظ تقدّمك لتتابع على الجهاز نفسه."
+      "يمنح محرّكنا الصوتي عالي الجودة ملفات PDF حياة جديدة بتشكيلة من الأصوات والأساليب.",
+      "رف محلي يحفظ تقدّمك لتتابع على الجهاز نفسه.",
+      "حدّد متن النص يدويًا لاستبعاد الترويسات والتذييلات وأرقام الصفحات من القراءة. يمكنك عرض المنطقة المحددة فقط وعكسها أفقيًا في الصفحات الزوجية."
     ],
     "description": "امنح ملفات PDF صوتًا يرافق يومك. تابع النص المظلّل، واضبط السرعة، وأكمل من حيث توقفت على جهازك. بلا حسابات أو اشتراكات."
   },
@@ -360,19 +408,23 @@
     "localBody": "PDF और वाणी की प्रोसेसिंग डिवाइस पर होती है। खाते की ज़रूरत नहीं है।",
     "privacy": "गोपनीयता नीति",
     "terms": "उपयोग की शर्तें",
+    "voiceView": "आवाज़",
+    "regionView": "पढ़ने का क्षेत्र",
     "headlines": [
       "आपकी PDF, अब सुनने के लिए भी",
       "मूल पाठ के साथ-साथ चलें",
       "एक वाक्य पर पूरा ध्यान",
-      "अध्याय और ज़रूरी पृष्ठ पाएँ",
-      "जहाँ छोड़ा था, वहीं से शुरू करें"
+      "अपना इंजन, कई मनपसंद आवाज़ें",
+      "जहाँ छोड़ा था, वहीं से शुरू करें",
+      "सिर्फ़ मुख्य पाठ सुनें।"
     ],
     "captions": [
       "iPhone, iPad और Mac पर PDF पढ़ें या सुनें।",
       "हाइलाइट से जानें कि दस्तावेज़ का कौन-सा हिस्सा पढ़ा जा रहा है।",
       "मौजूदा वाक्य बड़े अक्षरों में देखें और सुनने की गति चुनें।",
-      "विषय-सूची मौजूद हो तो अध्याय खोलें; बुकमार्क से आसानी से लौटें।",
-      "स्थानीय शेल्फ़ पर सहेजी प्रगति से उसी डिवाइस पर आगे पढ़ें।"
+      "हमारा उच्च-गुणवत्ता वाला वॉइस इंजन अलग-अलग आवाज़ों से आपके PDF को जीवंत बनाता है।",
+      "स्थानीय शेल्फ़ पर सहेजी प्रगति से उसी डिवाइस पर आगे पढ़ें।",
+      "मुख्य पाठ का क्षेत्र चुनकर हेडर, फ़ुटर और पृष्ठ संख्या को पढ़ने से बाहर रखें। चाहें तो केवल चुना क्षेत्र दिखाएँ और आमने-सामने के पृष्ठों के लिए सम पृष्ठों पर उसे दाएँ-बाएँ पलटें।"
     ],
     "description": "अपनी PDF को दें आवाज़। मूल पाठ में हाइलाइट के साथ सुनें, गति चुनें और उसी डिवाइस पर वहीं से आगे बढ़ें। न खाता, न सदस्यता।"
   },
@@ -389,19 +441,23 @@
     "localBody": "PDF dan suara diproses secara lokal, tanpa akun.",
     "privacy": "Kebijakan Privasi",
     "terms": "Ketentuan Penggunaan",
+    "voiceView": "Suara",
+    "regionView": "Area bacaan",
     "headlines": [
       "PDF Anda, kini bisa didengarkan",
       "Ikuti bacaan di teks aslinya",
       "Satu kalimat, lebih fokus",
-      "Temukan bab dan halaman penting",
-      "Kembali ke bacaan Anda"
+      "Mesin sendiri, beragam suara",
+      "Kembali ke bacaan Anda",
+      "Dengarkan isi, bukan kepala dan kaki halaman."
     ],
     "captions": [
       "Baca atau dengarkan PDF di iPhone, iPad, dan Mac.",
       "Sorotan teks membantu Anda mengikuti bagian yang sedang dibacakan.",
       "Kalimat aktif tampil besar dengan kontrol kecepatan yang mudah dijangkau.",
-      "Jelajahi daftar isi jika tersedia dan simpan penanda untuk kembali nanti.",
-      "Rak lokal menyimpan progres untuk dilanjutkan di perangkat yang sama."
+      "Mesin suara berkualitas tinggi buatan kami menghidupkan PDF Anda dengan beragam gaya suara.",
+      "Rak lokal menyimpan progres untuk dilanjutkan di perangkat yang sama.",
+      "Pilih area teks utama untuk mengecualikan kepala, kaki, dan nomor halaman dari pembacaan. Tampilkan hanya area pilihan dan cerminkan pada halaman genap bila diperlukan."
     ],
     "description": "Ubah waktu membaca menjadi waktu mendengar. Ikuti sorotan teks, atur kecepatan, dan lanjutkan PDF di perangkat Anda—tanpa akun atau langganan."
   },
@@ -418,19 +474,23 @@
     "localBody": "PDF’ler ve konuşma cihazda işlenir. Hesap gerekmez.",
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Koşulları",
+    "voiceView": "Ses",
+    "regionView": "Okuma alanı",
     "headlines": [
       "PDF'leriniz ses bulsun",
       "Özgün metni takip edin",
       "Dikkatiniz dinlediklerinizde",
-      "Önemli yerlere kolayca dönün",
-      "Kaldığınız yerden devam edin"
+      "Kendi motorumuz, zengin ses seçenekleri",
+      "Kaldığınız yerden devam edin",
+      "Üst ve alt bilgiler değil, yalnızca metin."
     ],
     "captions": [
       "Belgeleri yüklemeden, kendi hızınızda okuyun veya dinleyin.",
       "Okunan metin doğrudan PDF sayfasında vurgulanır.",
       "Geçerli cümle büyük gösterilir, dinlediğinize odaklanırsınız.",
-      "Varsa içindekilerden bölümlere geçin, yer imleri ekleyin.",
-      "Yerel kitaplık ilerlemenizi bu aygıtta saklar."
+      "Kendi geliştirdiğimiz yüksek kaliteli konuşma motoru, farklı ses stilleriyle PDF’lerinize hayat verir.",
+      "Yerel kitaplık ilerlemenizi bu aygıtta saklar.",
+      "Ana metin alanını seçerek üst bilgileri, alt bilgileri ve sayfa numaralarını okuma dışında bırakın. Yalnızca seçimi görüntüleyebilir ve çift sayfalarda yatay olarak yansıtabilirsiniz."
     ],
     "description": "PDF'lerinize ses verin. Vurgulanan metni takip edin ya da büyük yazılan geçerli cümleye odaklanın. Belgeleriniz aygıtınızda kalsın."
   },
@@ -447,19 +507,23 @@
     "localBody": "PDF và giọng nói được xử lý trên thiết bị, không cần tài khoản.",
     "privacy": "Chính sách quyền riêng tư",
     "terms": "Điều khoản sử dụng",
+    "voiceView": "Giọng đọc",
+    "regionView": "Vùng đọc",
     "headlines": [
       "Để PDF cất tiếng",
       "Theo dõi ngay trên văn bản gốc",
       "Tập trung vào từng câu",
-      "Đến chương và trang bạn cần",
-      "Tiếp tục trang sách còn dang dở"
+      "Bộ máy riêng, giọng đọc đa dạng",
+      "Tiếp tục trang sách còn dang dở",
+      "Chỉ nghe nội dung, bỏ qua đầu và chân trang."
     ],
     "captions": [
       "Đọc hoặc nghe PDF trên iPhone, iPad và Mac.",
       "Phần tô sáng giúp bạn theo dõi nội dung đang được đọc.",
       "Câu hiện tại hiển thị lớn, cùng điều khiển tốc độ ngay trong tầm tay.",
-      "Dùng mục lục nếu có và đánh dấu trang để dễ quay lại.",
-      "Giá sách cục bộ lưu tiến độ để tiếp tục trên cùng thiết bị."
+      "Bộ máy giọng nói chất lượng cao do chúng tôi phát triển mang đến sức sống cho PDF với nhiều phong cách giọng đọc.",
+      "Giá sách cục bộ lưu tiến độ để tiếp tục trên cùng thiết bị.",
+      "Tự chọn vùng văn bản chính để loại đầu trang, chân trang và số trang khỏi phần đọc. Có thể chỉ hiển thị vùng đã chọn và lật đối xứng vùng đó trên trang chẵn."
     ],
     "description": "Để PDF cất tiếng trong ngày của bạn. Theo dõi văn bản tô sáng, chỉnh tốc độ và tiếp tục trên cùng thiết bị. Không tài khoản, không thuê bao."
   }

@@ -47,6 +47,8 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
   if (process.env.SITE_URL) config.siteUrl = process.env.SITE_URL;
   validateConfig(config);
   const app = JSON.parse(await readFile(join(root, 'src/content/app-copy.json'), 'utf8'));
+  const screenshots = new Map(JSON.parse(await readFile(join(root, 'public/assets/provenance.json'), 'utf8'))
+    .map(item => [item.output, item]));
   const audio = JSON.parse(await readFile(join(root, 'public/assets/audio/manifest.json'), 'utf8'));
   if (audio.schema !== 2 || audio.voiceCount !== 39 || audio.languages.length !== 33 ||
       audio.samples.length !== 67 || audio.demos.length !== 16 ||
@@ -79,8 +81,13 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
     const link = (href, label, className = '') => `<a${className ? ` class="${className}"` : ''} href="${escape(href)}">${label}</a>`;
     const cta = (className = 'button primary') => link(config.appStoreUrl ?? `${home}#download`,
       `${escape(t.download)}${icon('arrow')}`, className);
-    const image = (file, alt, className, width, height, eager = false) =>
-      `<img class="${className}" src="${asset(`${locale}/${file}.webp`)}" width="${width}" height="${height}" alt="${escape(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+    const image = (file, alt, className, eager = false) => {
+      const capture = screenshots.get(`${locale}/${file}.webp`);
+      if (!capture || !(capture.width > 0) || !(capture.height > 0)) {
+        throw new Error(`Missing screenshot dimensions: ${locale}/${file}`);
+      }
+      return `<img class="${className}" src="${asset(`${locale}/${file}.webp`)}" width="${capture.width}" height="${capture.height}" alt="${escape(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+    };
     const langLinks = locales.map(([code, name]) => link(
       `${prefix}${code}/${page === '404' ? 'index' : page}.html`,
       `<span lang="${code}" dir="auto">${escape(name)}</span>${code === locale ? '<span aria-hidden="true">✓</span>' : ''}`,
@@ -107,7 +114,7 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
         ${link(`${local}privacy.html`, escape(a.privacy))}
         ${link(`${local}terms.html`, escape(a.terms))}
         ${link(`mailto:${config.supportEmail}`, escape(t.contact))}
-      </nav></div><div class="footer-bottom"><span>© ${year} ${escape(config.publisher)}</span><span>${escape(t.platforms)}</span></div>
+      </nav></div><div class="footer-bottom"><span>© ${year} ${escape(config.publisher)}</span><span>${escape(t.platforms.replace('iPhone', 'iPhone / iPhone Duo'))}</span></div>
       </footer>`;
 
     let content;
@@ -115,14 +122,17 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
       const faq = ['Offline', 'Mixed', 'Sync', 'Scans'].map(key =>
         `<details><summary>${escape(t[`faq${key}`])}<span aria-hidden="true">+</span></summary><p>${escape(t[`faq${key}Answer`])}</p></details>`).join('');
       const panels = [
-        ['mac', 'Mac', s.macUse, ['library', 'mac', 'mac-listening'], 1600, 1050],
-        ['ipad', 'iPad', s.ipadUse, ['ipad-library', 'ipad', 'ipad-listening'], 1000, 1334],
-        ['iphone', 'iPhone', s.iphoneUse, ['iphone-library', 'iphone-document', 'iphone'], 660, 1433]
+        ['iphone', 'iPhone', s.iphoneUse, ['iphone-library', 'iphone-document', 'iphone', 'iphone-voices', 'iphone-region']],
+        ['duo', 'iPhone Duo', s.duoUse, ['duo-library', 'duo-document', 'duo-listening', 'duo-voices', 'duo-region']],
+        ['ipad', 'iPad', s.ipadUse, ['ipad-library', 'ipad', 'ipad-listening', 'ipad-voices', 'ipad-region']],
+        ['mac', 'Mac', s.macUse, ['library', 'mac', 'mac-listening', 'mac-voices', 'mac-region']]
       ];
       const views = [
         ['library', s.homeView, a.captions[4]],
         ['document', s.documentView, a.captions[1]],
-        ['listening', s.listeningView, a.captions[2]]
+        ['listening', s.listeningView, a.captions[2]],
+        ['voices', a.voiceView, a.captions[3]],
+        ['region', a.regionView, a.captions[5]]
       ];
       const demo = audio.demos.find(item => item.locale === locale);
       if (!demo) throw new Error(`Missing segmentation recording: ${locale}`);
@@ -179,16 +189,17 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
           </div>
           <div class="hero-art">
             <div class="sound-ribbon" aria-hidden="true">${Array.from({ length: 23 }, (_, i) => `<i class="bar-${i % 6}"></i>`).join('')}</div>
-            <figure class="desktop-shot">${image('mac', `${a.headlines[1]} — Mac`, '', 1600, 1050, true)}</figure>
-            <figure class="tablet-shot">${image('ipad', s.ipadUse, '', 1000, 1333, true)}</figure>
-            <figure class="phone-shot">${image('iphone', `${a.headlines[2]} — iPhone`, '', 660, 1434, true)}</figure>
+            <figure class="desktop-shot">${image('mac', `${a.headlines[1]} — Mac`, '', true)}</figure>
+            <figure class="tablet-shot">${image('ipad', s.ipadUse, '', true)}</figure>
+            <figure class="duo-shot">${image('duo-listening', s.duoUse, '', true)}</figure>
+            <figure class="phone-shot">${image('iphone', `${a.headlines[2]} — iPhone`, '', true)}</figure>
           </div>
         </section>
         <div class="stats wrap" aria-label="${escape(t.features)}">
           <div><strong>33</strong><span>${escape(t.readingLanguages)}</span></div>
           <div><strong>${audio.voiceCount}</strong><span>${escape(s.voicesStat)}</span></div>
           <div><strong>16</strong><span>${escape(t.interfaceLanguages)}</span></div>
-          <div><strong>3</strong><span>iPhone · iPad · Mac</span></div>
+          <div><strong>4</strong><span>iPhone · iPhone Duo · iPad · Mac</span></div>
         </div>
         <section class="section wrap" id="features"><div id="voices">
           <div class="section-heading"><p class="eyebrow">${escape(a.voiceTitle)}</p><h2>${escape(s.voicesTitle)}</h2><p>${escape(s.voicesBody)}</p></div>
@@ -223,19 +234,27 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
           <ul class="rhythm-rules"><li>${icon('lines')}<span>${escape(s.fontRule)}</span></li><li>${icon('arrow')}<span>${escape(s.wrapRule)}</span></li><li>${icon('wave')}<span>${escape(s.punctuationRule)}</span></li></ul>
           <p class="fine-print">${escape(s.demoNote)}</p>
         </div></section>
+        <section class="section wrap region-feature" id="reading-region">
+          <div class="section-heading"><p class="eyebrow">${escape(a.regionView)}</p>
+            <h2>${escape(a.headlines[5])}</h2><p>${escape(a.captions[5])}</p></div>
+          <figure><a class="screenshot-link" href="${asset(`${locale}/duo-region.webp`)}" target="_blank" rel="noopener"
+            aria-label="${escape(`iPhone Duo — ${a.regionView}. ${s.openScreenshot}`)}">
+            ${image('duo-region', `iPhone Duo — ${a.regionView}`, 'product-screen')}</a>
+            <figcaption>iPhone Duo · ${escape(a.regionView)}</figcaption></figure>
+        </section>
         <section class="experience section" id="experience"><div class="wrap">
           <div class="section-heading centered"><p class="eyebrow">${escape(t.experience)}</p><h2>${escape(s.deviceTitle)}</h2><p>${escape(s.deviceBody)}</p></div>
           <div class="device-tabs" data-tabs aria-label="${escape(t.galleryLabel)}" hidden>
             ${panels.map(([id, name]) => `<button type="button" id="tab-${id}" aria-controls="panel-${id}">${name}</button>`).join('')}
           </div>
           <p class="gallery-hint">${escape(s.openScreenshot)}</p>
-          <div class="device-panels">${panels.map(([id, name, description, files, width, height]) =>
+          <div class="device-panels">${panels.map(([id, name, description, files]) =>
             `<section class="device-panel ${id}" id="panel-${id}" data-panel aria-label="${name}">
               <p class="device-description">${escape(description)}</p>
               <div class="device-gallery">${views.map(([view, label, caption], index) =>
                 `<figure data-view="${view}">
                   <div class="device-stage"><a class="screenshot-link" href="${asset(`${locale}/${files[index]}.webp`)}" target="_blank" rel="noopener" aria-label="${escape(`${name} — ${label}. ${s.openScreenshot}`)}">
-                    ${id === 'iphone' ? '<div class="phone-frame">' : ''}${image(files[index], `${name} — ${label}`, 'product-screen', width, height)}${id === 'iphone' ? '</div>' : ''}
+                    ${id === 'iphone' ? '<div class="phone-frame">' : ''}${image(files[index], `${name} — ${label}`, 'product-screen')}${id === 'iphone' ? '</div>' : ''}
                   </a></div>
                   <figcaption><strong>${escape(label)}</strong><span>${escape(caption)}</span></figcaption>
                 </figure>`).join('')}</div>

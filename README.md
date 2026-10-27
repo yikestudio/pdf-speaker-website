@@ -69,7 +69,7 @@ BASE_PATH=/pdf-speaker PORT=4174 npm run preview
 - [src/content/demo-passages.mjs](src/content/demo-passages.mjs)：16 套原创断句示例，每套包含标题与三行正文。
 - [src/content/legal.mjs](src/content/legal.mjs)：16 种语言的隐私政策及补充使用条款。
 - [src/content/app-copy.json](src/content/app-copy.json)：从 App 本地化导入的产品文案、图注。
-- [public/assets/](public/assets/)：144 张经过 WebP 优化的真实本地化截图、品牌素材和前端文件。
+- [public/assets/](public/assets/)：320 张经过 WebP 优化的真实本地化截图、品牌素材和前端文件。
 - [public/assets/provenance.json](public/assets/provenance.json)：每张图的原始 PNG 与发布 WebP SHA256、界面和文档语言、书名、章节及 XCTest 附件来源。
 - [public/assets/audio/](public/assets/audio/)：83 段真实生成的 MP3，以及所用语音资源的许可证副本。
 - [public/assets/audio/manifest.json](public/assets/audio/manifest.json)：音频来源、内部引擎与音色 ID、文字稿、实测时长与波形、句段时间和文件 SHA256。
@@ -87,23 +87,28 @@ BASE_PATH=/pdf-speaker PORT=4174 npm run preview
 # 每个平台可合并多个结果包，但必须包含全部 16 种语言。
 npm run import-captures -- mac /absolute/path/to/Mac.xcresult
 npm run import-captures -- iphone /absolute/path/to/iPhone.xcresult
+npm run import-captures -- duo /absolute/path/to/iPhoneDuo.xcresult
 npm run import-captures -- ipad /absolute/path/to/iPad.xcresult
 npm run import-assets -- ../ListenToPDF/StoreAssets
 npm run check
 ```
 
 `import-captures` 将经过验证的原始附件与文档来源写入 App 工程的 `StoreAssets/WebsiteCaptures/`，
-每个平台 80 张原始图；`import-assets` 只读取该素材目录，输出官网使用的 144 张 WebP。
-每种网页语言包含 Mac、iPad、iPhone 各三张：主界面、文档视图、听书视图。
-平台内三张图在宽屏并排、窄屏纵向展示，点击可在新标签页查看完整图片；关闭 JavaScript 后九张图全部保留。
-拍摄使用隔离的 `.websitecaptures` App；PDF 导入入口仅在 DEBUG 中存在，常规 UI 测试不提供参数时跳过拍摄。
+每个平台 96 张原始图；`import-assets` 只读取该素材目录，输出官网使用的 320 张 WebP。
+同一个多设备 `.xcresult` 的导入须串行执行；`xcresulttool` 首次读取会初始化内部数据库。
+每种网页语言包含 iPhone、iPhone Duo、iPad、Mac 各五张：主界面、文档视图、听书视图、声音选择、朗读区域编辑。
+仅声音截图展示弹出层，不再展示目录弹窗。Duo 使用真实展开内屏截图，文档视图只显示 PDF，播放条在底部悬浮。
+朗读区域使用完整编辑界面展示真实选框及遮罩，不是额外的弹出菜单；单独的优势区说明手动框选正文、排除页眉页脚与页码、仅显示选区和偶数页镜像。不宣称自动识别所有页眉页脚。
+平台内五张图在宽屏按两列展示、窄屏纵向展示，点击可在新标签页查看完整图片；关闭 JavaScript 后二十张图全部保留。
+首页首屏也包含四种设备，图片及文档随网页语言切换。
+拍摄使用隔离的 `.websitecaptures` 或 `.duocaptures` App；PDF 导入入口仅在 DEBUG 中存在，常规 UI 测试不提供参数时跳过拍摄。
 没有替换正式安装的 App。`import-assets` 不是构建或部署前提，导入后的素材与文案已独立保存在此项目。
 正常构建仅需 Node.js，不需要 Xcode、Python、App 源码或 WebP 工具。
 
 ## 试听与智能断句演示
 
 首页依次展示产品概览、可听的音色比较、33 种朗读语言、可播放的排版断句示例、
-iPhone / iPad / Mac 真实界面及使用场景，最后说明隐私和购买条件。
+iPhone / iPhone Duo / iPad / Mac 真实界面及使用场景，最后说明隐私和购买条件。
 
 - **32 种语言的双声音试听**：每种语言两段，同一语言的两种代表性声音朗读相同文字，
   另有一段中英文混读。加上繁体中文的两段独立文字稿变体，共 67 段试听文件。
@@ -158,7 +163,7 @@ manifest 保留源 WAV 与发布文件的校验和、结果包名称及导入时
 ## 设计与验证
 
 官网遵循 Web 语义和 WCAG 基础，不照搬原生 App 导航。首屏以原文高亮与听书真实画面形成视觉重点，背景与装饰不抢内容。
-首屏同时展示 Mac、iPad 与 iPhone 的真实界面；16 种语言均突出离线听读，
+首屏同时展示 Mac、iPad、iPhone Duo 与 iPhone 的真实界面；16 种语言均突出离线听读，
 并说明本地 PDF 与设备上可用声音的使用前提，不暗示云端文件无需网络即可获取。
 后台播放文案限定为 iPhone / iPad 切换应用或锁屏后继续朗读，依据 App 的后台音频配置和播放会话实现，
 不承诺 Mac 睡眠后继续播放；本轮未进行真机后台播放专项测试。
@@ -175,7 +180,15 @@ iPhone 框中的灵动岛是静态硬件装饰，不代表实现了 Live Activit
 [tests/preview.test.mjs](tests/preview.test.mjs) 检查项目子路径下的媒体类型、长度、HEAD、
 首部 / 尾部 / 开放式字节范围及不可满足范围。
 [scripts/check-audio.mjs](scripts/check-audio.mjs) 使用 ffmpeg 完整解码音频，检查时长、非空语音和实际段落静音。
-本轮验证结果：
+2026-10-28 四设备与朗读区域素材验收：
+
+- 20 项 Node 测试通过，包含四设备各五场景、16 语言区域说明、320 张图片来源与 SHA256。
+- 16 语言 × 四设备 × 320 / 768 / 1440px × 浅色 / 深色，共 384 项布局检查无横向溢出，切换后均展示五张图片。
+- 320px、200% 文字、深色、减少动态效果下，64 项设备/语言检查无横向溢出；16 语言的方向键、Home、End 和 RTL 方向通过。
+- 全部 320 张 WebP 在浏览器成功解码，固有尺寸与元数据一致；修正了 cwebp 对 iPad 缩放高度向上取整的一像素差异。
+- 已查看四设备首屏组合与正文框选优势区。区域文案明确由用户选择正文，截图显示页眉页脚留在框外，不宣称自动识别。
+
+此前三设备版本的验证结果：
 
 - 19 项 Node 自动化测试全部通过，覆盖三平台各三种视图、离线文案、截图文档语言及发布文件校验和。
 - 83 个 MP3 完整解码通过；16 个段落静音区间全部通过，最大 RMS 为 0.000067，低于 0.002 阈值。
