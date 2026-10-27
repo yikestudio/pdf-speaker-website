@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">PDF read aloud</title>
+  <desc id="desc">A folded white PDF document with a speaker and sound waves on a soft blue-to-violet gradient.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4289F5"/>
+      <stop offset="0.5" stop-color="#5665DD"/>
+      <stop offset="1" stop-color="#7542C8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#background)"/>
+  <g id="mark" fill="#FFFFFF">
+    <path d="M334 196H558L736 374V782Q736 828 690 828H334Q288 828 288 782V242Q288 196 334 196Z"/>
+    <path d="M558 196V328Q558 374 604 374H736Z" fill="#D1D0F3"/>
+    <g fill="#5554C8" transform="translate(341 424) scale(1.4)" fill-rule="evenodd">
+      <path d="M0 0H40Q68 0 68 29Q68 58 40 58H20V96H0ZM20 18V40H38Q48 40 48 29Q48 18 38 18Z"/>
+      <path transform="translate(84)" d="M0 0H34Q78 0 78 48Q78 96 34 96H0ZM20 19V77H32Q56 77 56 48Q56 19 32 19Z"/>
+      <path transform="translate(178)" d="M0 0H66V20H20V39H60V59H20V96H0Z"/>
+    </g>
+    <path d="M378 650H428L486 608Q500 598 500 618V750Q500 770 486 760L428 718H378Q364 718 364 704V664Q364 650 378 650Z" fill="#5554C8"/>
+    <path d="M548 640Q588 684 548 728" fill="none" stroke="#5554C8" stroke-width="32" stroke-linecap="round"/>
+    <path d="M608 610Q674 684 608 758" fill="none" stroke="#5554C8" stroke-width="32" stroke-linecap="round"/>
+  </g>
+</svg>

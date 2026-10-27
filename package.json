@@ -1,0 +1,17 @@
+{
+  "name": "pdf-speaker-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run build && npm test",
+    "import-assets": "node scripts/import-app-assets.mjs",
+    "import-captures": "node scripts/import-app-captures.mjs",
+    "export-app-audio": "node scripts/export-app-audio.mjs",
+    "check-audio": "node scripts/check-audio.mjs"
+  }
+}
