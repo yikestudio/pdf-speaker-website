@@ -1,4 +1,4 @@
-# PDF Speaker Website
+# Prosodia Website
 
 独立静态官网：现代、克制的产品展示，16 种语言的首页、隐私政策与用户条款。
 使用真实 App 截图与 App 生成的语音素材，不依赖远程字体、CDN、分析脚本、Cookie 或运行时框架。
@@ -33,8 +33,12 @@ JavaScript 负责根入口的浏览器语言选择、设备截图标签切换、
 - `appStoreUrl`：当前 `null`。获得真实链接后填写 `https://apps.apple.com/...`。首屏主按钮引导试听；下载入口在未配置时定位到明确的待发布说明，不伪装成可下载按钮，不跳转假地址。
 - `siteUrl`：已配置正式 GitHub Pages 地址，**包含仓库子路径**。未配置时不输出虚假的 canonical，sitemap 为空。GitHub Actions 会自动传入 Pages 的实际 `SITE_URL`。
 - `supportEmail`、`publisher`：沿用现有发布资料的工作室名称及公开支持邮箱。
-- `priceUSD`：美国区参考价 `14.99`。各地区币种、税费和最终购买条件以 App Store 为准；网站不处理支付。
+- `monthlyPriceUSD` / `yearlyPriceUSD` / `lifetimePriceUSD`：Prosodia Pro 美国区参考价 `1.99` / 月、`11.99` / 年、一次买断 `22.90`。App 免费下载，每台设备每天免费朗读一小时；系统声音免费，有内置音色的语言各保留四个免费音色。三个 Pro 方案都解锁全部内置音色及不限时朗读；只有月付和年付自动续订。买断不会自动取消既有订阅。网站不处理支付，地区币种、税费与购买条件以 App Store 为准。
 - `updated`：政策内容修订日期，不随构建日期自动变动。
+
+品牌已更名为 Prosodia；保留现有 GitHub 仓库与 Pages 路径，避免破坏已使用的政策和支持链接。
+16 种语言的购买说明、条款和隐私政策区分免费额度、自动续订、恢复购买及离线有效期。
+设备端额度记录只用于计算免费朗读时间，不是上传到开发者服务器的行为分析。
 
 不要将示例地址当成真实域名提交到 App Store。App 工程内的政策链接已接入本官网，
 首次介绍和设置均按当前界面语言打开对应的 `terms.html` / `privacy.html`；以后更换域名或路径时须同步更新 App。

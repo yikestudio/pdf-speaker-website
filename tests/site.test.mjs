@@ -109,8 +109,35 @@ test('pending download is explicit, localized, and not an active purchase link',
       assert.ok(html.includes(escape(siteCopy[code].pendingBody)), code);
       assert.ok(!html.includes('href="https://apps.apple.com'), code);
     }
-    assert.ok(html.includes('US$14.99'), code);
+    assert.ok(html.includes('US$1.99'), code);
+    assert.ok(html.includes('US$11.99'), code);
+    assert.ok(html.includes('US$22.90'), code);
     assert.ok(html.includes(escape(siteCopy[code].priceNote)), code);
+  }
+});
+
+test('Prosodia clearly separates the free allowance from renewing Pro plans', () => {
+  assert.equal(config.name, 'Prosodia');
+  assert.equal(config.monthlyPriceUSD, '1.99');
+  assert.equal(config.yearlyPriceUSD, '11.99');
+  assert.equal(config.lifetimePriceUSD, '22.90');
+  for (const [code] of locales) {
+    const html = pages.get(`${code}/index.html`);
+    for (const field of ['freeDetails', 'proBenefits', 'monthly', 'yearly', 'lifetime', 'lifetimeTerms',
+      'lifetimeSubscriptionWarning', 'subscriptionTerms', 'subscriptionNetwork']) {
+      assert.ok(html.includes(escape(app[code][field])), `${code}: ${field}`);
+    }
+    assert.ok(html.includes('Prosodia Pro'), code);
+    assert.ok(html.includes(escape(siteCopy[code].freeDownload)), code);
+    assert.ok(html.includes(escape(siteCopy[code].freeAllowance)), code);
+  }
+  for (const [path, html] of pages) {
+    assert.ok(!/PDF Speaker|US\$(?:14\.99|2\.00|15\.00)|No subscription|One-time purchase/.test(html), path);
+  }
+  for (const price of ['0.00', '-2.00', '2', 'NaN', undefined]) {
+    assert.throws(() => validateConfig({ ...config, monthlyPriceUSD: price }));
+    assert.throws(() => validateConfig({ ...config, yearlyPriceUSD: price }));
+    assert.throws(() => validateConfig({ ...config, lifetimePriceUSD: price }));
   }
 });
 

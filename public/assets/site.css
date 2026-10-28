@@ -186,7 +186,7 @@ summary::-webkit-details-marker { display: none; }
 .price { margin-block: 32px 4px; display: flex; align-items: baseline; justify-content: center; flex-wrap: wrap; gap: 8px 14px; }
 .price bdi { font-size: clamp(1.5rem, calc(1rem + 4vw), 2.6rem); max-width: 100%; font-weight: 600; letter-spacing: -.05em; }
 .price span { font-size: .9rem; color: #c1c9dc; }
-.download-card .no-subscription { font-size: .88rem; }
+.download-card .plan-summary { font-size: .88rem; margin-block: 18px; }
 .pending-label { display: inline-block; border: 1px solid #677894; border-radius: 100px; padding: 12px 24px; font-weight: 600; margin-block: 26px 16px; }
 .download-card .pending-label { color: #fff; }
 .download-card .pending-body { font-size: .84rem; max-width: 530px; }

@@ -26,7 +26,9 @@ export function validateConfig(config) {
       throw new Error('siteUrl must be null or an HTTPS deployment URL including the repository path.');
     }
   }
-  if (!/^\d+\.\d{2}$/.test(config.priceUSD) || !/^\d{4}-\d{2}-\d{2}$/.test(config.updated)) {
+  if (![config.monthlyPriceUSD, config.yearlyPriceUSD, config.lifetimePriceUSD].every(price =>
+    typeof price === 'string' && /^\d+\.\d{2}$/.test(price) && Number(price) > 0) ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(config.updated)) {
     throw new Error('Invalid price or policy revision date.');
   }
 }
@@ -186,7 +188,7 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
             <h1>${escape(a.hero)}</h1><p class="hero-description">${escape(s.heroBody)}</p>
             <p class="offline-note">${escape(s.offlineBody)}</p>
             <div class="hero-actions">${link('#voices', `${icon('wave')}${escape(s.listen)}`, 'button primary')}${cta('text-link')}</div>
-            <p class="purchase-note">${escape(t.oneTime)}<span aria-hidden="true"> · </span>${escape(t.noSubscription)}</p>
+            <p class="purchase-note">${escape(t.freeDownload)}<span aria-hidden="true"> · </span>${escape(t.freeAllowance)}</p>
           </div>
           <div class="hero-art">
             <div class="sound-ribbon" aria-hidden="true">${Array.from({ length: 23 }, (_, i) => `<i class="bar-${i % 6}"></i>`).join('')}</div>
@@ -276,8 +278,15 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
         <section class="download-section wrap" id="download" tabindex="-1"><div class="download-card">
           <img src="${asset('app-icon.webp')}" width="72" height="72" alt="" loading="lazy">
           <h2>${escape(t.buyTitle)}</h2><p>${escape(t.buyBody)}</p>
-          <div class="price"><bdi>US$${escape(config.priceUSD)}</bdi><span>${escape(t.oneTime)}</span></div>
-          <p class="no-subscription">${escape(t.noSubscription)}</p>
+          <h3>${escape(t.freeDownload)}</h3><p class="plan-summary">${escape(a.freeDetails)}</p>
+          <h3>${escape(config.name)} Pro</h3><p>${escape(a.proBenefits)}</p>
+          <div class="price"><bdi>US$${escape(config.monthlyPriceUSD)}</bdi><span>${escape(a.monthly)}</span></div>
+          <div class="price"><bdi>US$${escape(config.yearlyPriceUSD)}</bdi><span>${escape(a.yearly)}</span></div>
+          <div class="price"><bdi>US$${escape(config.lifetimePriceUSD)}</bdi><span>${escape(a.lifetime)}</span></div>
+          <p class="plan-summary">${escape(a.lifetimeTerms)}</p>
+          <p class="plan-summary">${escape(a.subscriptionTerms)}</p>
+          <p class="plan-summary">${escape(a.lifetimeSubscriptionWarning)}</p>
+          <p class="plan-summary">${escape(a.subscriptionNetwork)}</p>
           ${config.appStoreUrl ? cta('button light') : `<p class="pending-label">${escape(t.pending)}</p><p class="pending-body">${escape(t.pendingBody)}</p>`}
           <p class="price-note">${escape(t.priceNote)}</p><p class="requirements">${escape(t.requirements)}</p>
         </div></section>

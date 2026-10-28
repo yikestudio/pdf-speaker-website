@@ -25,7 +25,16 @@ const keys = {
   privacy: '隐私政策',
   terms: '用户条款',
   voiceView: '声音',
-  regionView: '朗读区域'
+  regionView: '朗读区域',
+  freeDetails: '免费版每台设备每天可朗读 1 小时，本地零点重置。系统声音免费，有内置声音的语言各保留 4 个免费音色。',
+  proBenefits: '不限时朗读，解锁全部内置音色。',
+  monthly: '按月订阅',
+  yearly: '按年订阅',
+  lifetime: '一次买断',
+  lifetimeTerms: '一次付款，永久解锁 Pro，不自动续费。',
+  lifetimeSubscriptionWarning: '买断不会自动取消已有订阅。请在 App Store 管理订阅，避免继续续费。',
+  subscriptionTerms: '订阅将自动续订，除非取消。确认购买后由 Apple 账户扣款，可随时在 App Store 管理或取消。',
+  subscriptionNetwork: '订阅购买及恢复需要网络；已验证的 Pro 权益可离线使用至有效期结束。'
 };
 const copy = {};
 const provenance = [];
