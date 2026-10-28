@@ -122,7 +122,10 @@ test('audio is accessible, lazy, local, non-autoplaying and usable without JavaS
       assert.match(attributes, /\bcontrols\b/);
       assert.match(attributes, /preload="none"/);
       assert.match(attributes, /aria-label="[^"]+"/);
-      assert.match(attributes, /src="\.\.\/assets\/audio\/[a-zA-Z0-9-]+\.mp3"/);
+      const source = attributes.match(/src="\.\.\/assets\/audio\/([a-zA-Z0-9-]+\.mp3)\?v=([a-f0-9]{12})"/);
+      assert.ok(source, 'Audio URL includes a content-derived cache version');
+      const clip = [...audio.samples, ...audio.demos].find(clip => clip.file === source[1]);
+      assert.equal(source[2], clip.sha256.slice(0, 12));
       assert.doesNotMatch(attributes, /\bautoplay\b/);
     }
     assert.equal((html.match(/class="transcript"/g) ?? []).length, 65);

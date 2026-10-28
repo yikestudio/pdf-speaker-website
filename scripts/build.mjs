@@ -145,13 +145,14 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
         if (!language) throw new Error(`Unknown audio language: ${code}`);
         return language.name;
       };
+      const audioURL = clip => `${asset(`audio/${clip.file}`)}?v=${clip.sha256.slice(0, 12)}`;
       const player = (clip, id, isDemo = false) => `<div class="audio-player" data-audio-player>
-        <audio id="${id}" controls preload="none" src="${asset(`audio/${clip.file}`)}"
+        <audio id="${id}" controls preload="none" src="${audioURL(clip)}"
           aria-label="${escape(`${s.listen} · ${clip.voice} · ${languageName(clip.language)}`)}"${isDemo ? ' data-demo-audio' : ''}>
-          ${link(asset(`audio/${clip.file}`), escape(s.downloadAudio))}</audio>
+          ${link(audioURL(clip), escape(s.downloadAudio))}</audio>
         <p class="audio-error" role="alert" data-audio-error hidden>${escape(s.audioError)}</p>
         <div class="audio-caption"><span>${escape(seconds.format(clip.duration))} · <bdi>${escape(clip.voice)}</bdi></span>
-          ${link(asset(`audio/${clip.file}`), escape(s.downloadAudio))}</div></div>`;
+          ${link(audioURL(clip), escape(s.downloadAudio))}</div></div>`;
       const voiceCards = audio.samples.filter(clip => clip.locale !== (locale === 'zh-Hant' ? 'zh-Hans' : 'zh-Hant')).map(clip => {
         const waveform = clip.peaks.map((peak, i) => {
           const height = Math.max(2, Math.sqrt(peak) * 42);
