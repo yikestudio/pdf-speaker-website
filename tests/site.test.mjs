@@ -182,6 +182,33 @@ test('all 320 screenshots are real imported assets and stay within site budget',
   assert.ok(total < 40_000_000, `${total} bytes`);
 });
 
+test('all 16 social cards are localized, opaque and linked from page metadata', async () => {
+  const cards = JSON.parse(await readFile(join(out, 'assets/social-provenance.json'), 'utf8'));
+  assert.equal(cards.length, 16);
+  assert.equal(new Set(cards.map(card => card.sha256)).size, 16);
+  for (const [code] of locales) {
+    const card = cards.find(item => item.locale === code);
+    assert.ok(card, code);
+    const data = await readFile(join(out, 'assets', card.output));
+    assert.equal(data.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+    assert.equal(data.readUInt32BE(16), 1200);
+    assert.equal(data.readUInt32BE(20), 630);
+    assert.equal(data[24], 8);
+    assert.equal(data[25], 2);
+    assert.equal(createHash('sha256').update(data).digest('hex'), card.sha256);
+    assert.equal(Object.keys(card.sources).length, 2);
+    for (const name of ['index', 'privacy', 'terms']) {
+      const html = pages.get(`${code}/${name}.html`);
+      assert.match(html, new RegExp(`<meta property="og:image" content="[^"]*/assets/${code}/social\\.png">`));
+      assert.match(html, new RegExp(`<meta name="twitter:image" content="[^"]*/assets/${code}/social\\.png">`));
+      assert.ok(html.includes('property="og:image:width" content="1200"'));
+      assert.ok(html.includes('property="og:image:height" content="630"'));
+    }
+    assert.equal(app[code].voiceTitle, app[code].headlines[3]);
+    assert.equal(app[code].voiceBody, app[code].captions[3]);
+  }
+});
+
 test('all four devices present five scenes including voice selection and reading-area editing', () => {
   const files = {
     mac: ['library', 'mac', 'mac-listening', 'mac-voices', 'mac-region'],

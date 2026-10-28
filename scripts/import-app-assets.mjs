@@ -7,6 +7,8 @@ import { locales } from '../src/locales.mjs';
 const root = resolve(import.meta.dirname, '..');
 const source = resolve(process.argv[2] ?? join(root, '../ListenToPDF/StoreAssets'));
 const captures = join(source, 'WebsiteCaptures');
+const artwork = join(source, 'Artwork');
+const artworkMetadata = JSON.parse(await readFile(join(artwork, 'provenance.json'), 'utf8'));
 const captureMetadata = (await Promise.all(['mac', 'iphone', 'duo', 'ipad'].map(async platform =>
   JSON.parse(await readFile(join(captures, `${platform}.json`), 'utf8'))))).flat();
 const assets = join(root, 'public/assets');
@@ -14,8 +16,6 @@ await mkdir(assets, { recursive: true });
 const keys = {
   hero: '让 PDF 开口，让阅读继续。',
   heroBody: '欢迎使用 PDF Speaker',
-  voiceTitle: '自研引擎，多样好声音',
-  voiceBody: '高质量自研语音引擎，多种声音风格，让 PDF 听起来更动人。',
   languageTitle: '丰富语言，听见更广阔的世界',
   languageBody: '多种朗读语言，支持中英文混读，并按语言记住喜爱的声音。',
   sentenceTitle: '智能断句，读得更自然',
@@ -38,6 +38,7 @@ const keys = {
 };
 const copy = {};
 const provenance = [];
+const socialProvenance = [];
 const images = [
   ['mac', '02-document', 'mac', 1600],
   ['iphone', '03-listening', 'iphone', 660],
@@ -68,8 +69,19 @@ for (const [locale] of locales) {
   }));
   copy[locale].headlines = data.listing.screenshot_headlines;
   copy[locale].captions = data.listing.screenshot_captions;
+  copy[locale].voiceTitle = data.listing.screenshot_headlines[3];
+  copy[locale].voiceBody = data.listing.screenshot_captions[3];
   copy[locale].description = data.listing.promotional_text;
   await mkdir(join(assets, locale), { recursive: true });
+  const socialFile = `${locale}/social.png`;
+  const social = artworkMetadata.find(item => item.file === socialFile);
+  const socialData = await readFile(join(artwork, socialFile));
+  if (!social || social.width !== 1200 || social.height !== 630 ||
+      createHash('sha256').update(socialData).digest('hex') !== social.sha256) {
+    throw new Error(`Social artwork provenance mismatch: ${socialFile}`);
+  }
+  await copyFile(join(artwork, socialFile), join(assets, socialFile));
+  socialProvenance.push({ ...social, locale, source: `Artwork/${socialFile}`, output: socialFile });
   for (const [platform, file, name, width] of images) {
     const relative = `Raw/${platform}/${locale}/${file}.png`;
     const input = join(captures, relative);
@@ -93,4 +105,5 @@ execFileSync('cwebp', ['-quiet', '-lossless', '-resize', '192', '192',
 await mkdir(join(root, 'src/content'), { recursive: true });
 await writeFile(join(root, 'src/content/app-copy.json'), JSON.stringify(copy, null, 2) + '\n');
 await writeFile(join(assets, 'provenance.json'), JSON.stringify(provenance, null, 2) + '\n');
-console.log(`Imported ${provenance.length} real localized screenshots; no app dependency is needed to build.`);
+await writeFile(join(assets, 'social-provenance.json'), JSON.stringify(socialProvenance, null, 2) + '\n');
+console.log(`Imported ${provenance.length} real localized screenshots and ${socialProvenance.length} social cards.`);

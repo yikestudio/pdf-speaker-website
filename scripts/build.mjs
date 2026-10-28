@@ -313,7 +313,7 @@ export async function build(overrides = {}, outputDirectory = join(root, '_site'
     }
     const canonical = urlFor(canonicalPath);
     const alternate = locales.map(([code]) => `<link rel="alternate" hreflang="${code}" href="${escape(urlFor(`${code}/${page === '404' ? 'index' : page}.html`) ?? `${prefix}${code}/${page === '404' ? 'index' : page}.html`)}">`).join('\n');
-    const socialImage = urlFor(`assets/${locale}/mac.webp`) ?? asset(`${locale}/mac.webp`);
+    const socialImage = urlFor(`assets/${locale}/social.png`) ?? asset(`${locale}/social.png`);
     return `<!doctype html>
 <html lang="${locale}" dir="${locale === 'ar' ? 'rtl' : 'ltr'}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -326,8 +326,10 @@ ${alternate}
 <link rel="alternate" hreflang="x-default" href="${escape(urlFor(page === 'privacy' || page === 'terms' ? `en/${page}.html` : 'index.html') ?? `${prefix}${page === 'privacy' || page === 'terms' ? `en/${page}.html` : 'index.html'}`)}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="${escape(config.name)}">
 <meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}">
-<meta property="og:image" content="${escape(socialImage)}"><meta property="og:image:alt" content="${escape(a.headlines[1])}">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="${escape(socialImage)}"><meta property="og:image:alt" content="${escape(a.headlines[0])}">
+<meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${escape(socialImage)}">
+<meta name="twitter:image:alt" content="${escape(a.headlines[0])}">
 <link rel="icon" href="${asset('app-mark.svg')}" type="image/svg+xml">
 <link rel="stylesheet" href="${asset('site.css')}">
 <script type="module" src="${asset('site.js')}"></script>

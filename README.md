@@ -73,8 +73,9 @@ BASE_PATH=/pdf-speaker PORT=4174 npm run preview
 - [src/content/demo-passages.mjs](src/content/demo-passages.mjs)：16 套原创断句示例，每套包含标题与三行正文。
 - [src/content/legal.mjs](src/content/legal.mjs)：16 种语言的隐私政策及补充使用条款。
 - [src/content/app-copy.json](src/content/app-copy.json)：从 App 本地化导入的产品文案、图注。
-- [public/assets/](public/assets/)：320 张经过 WebP 优化的真实本地化截图、品牌素材和前端文件。
+- [public/assets/](public/assets/)：320 张经过 WebP 优化的真实本地化截图、16 张本地化社交分享图、品牌素材和前端文件。
 - [public/assets/provenance.json](public/assets/provenance.json)：每张图的原始 PNG 与发布 WebP SHA256、界面和文档语言、书名、章节及 XCTest 附件来源。
+- [public/assets/social-provenance.json](public/assets/social-provenance.json)：1200 × 630 分享图及其真实 iPhone/Mac 截图来源的 SHA256；Open Graph 和 Twitter 使用同一语言的分享图。
 - [public/assets/audio/](public/assets/audio/)：83 段真实生成的 MP3，以及所用语音资源的许可证副本。
 - [public/assets/audio/manifest.json](public/assets/audio/manifest.json)：音频来源、内部引擎与音色 ID、文字稿、实测时长与波形、句段时间和文件 SHA256。
 - [scripts/build.mjs](scripts/build.mjs)：无依赖静态生成器，构建时验证链接配置和语言完整性。
@@ -93,12 +94,15 @@ npm run import-captures -- mac /absolute/path/to/Mac.xcresult
 npm run import-captures -- iphone /absolute/path/to/iPhone.xcresult
 npm run import-captures -- duo /absolute/path/to/iPhoneDuo.xcresult
 npm run import-captures -- ipad /absolute/path/to/iPad.xcresult
+# 在 App 工程使用 Scripts/BuildLaunchArtwork.py 生成 Artwork/，
+# --review-captures 指向包含三种 Pro 方案截图的 Mac XCTest 附件导出目录。
 npm run import-assets -- ../ListenToPDF/StoreAssets
 npm run check
 ```
 
 `import-captures` 将经过验证的原始附件与文档来源写入 App 工程的 `StoreAssets/WebsiteCaptures/`，
-每个平台 96 张原始图；`import-assets` 只读取该素材目录，输出官网使用的 320 张 WebP。
+每个平台 96 张原始图；`import-assets` 读取该目录及 `Artwork/`，输出官网使用的 320 张 WebP 和 16 张分享图。
+语音宣传标题与说明使用已校验的商店素材文案，和 App 内部引擎标签分离，不宣称所有底层组件均为独占自研。
 同一个多设备 `.xcresult` 的导入须串行执行；`xcresulttool` 首次读取会初始化内部数据库。
 每种网页语言包含 iPhone、iPhone Duo、iPad、Mac 各五张：主界面、文档视图、听书视图、声音选择、朗读区域编辑。
 仅声音截图展示弹出层，不再展示目录弹窗。Duo 使用真实展开内屏截图，文档视图只显示 PDF，播放条在底部悬浮。

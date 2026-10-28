@@ -1,0 +1,210 @@
+[
+  {
+    "file": "en/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/en/03-listening.png": "6866323116dd62f419e04a447d40081e019e3e9e32722a1f817ac6fa918e3e24",
+      "StoreAssets/WebsiteCaptures/Raw/mac/en/02-document.png": "fe2b3a2ac92bbea5666c03e66f8e9c87604a69af11f4fed290a84376ae2e3972"
+    },
+    "sha256": "c31947edd35e17153dbefa8cdafc3dce02c84eb4db15819cc91474ef438be4e2",
+    "locale": "en",
+    "source": "Artwork/en/social.png",
+    "output": "en/social.png"
+  },
+  {
+    "file": "zh-Hans/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/zh-Hans/03-listening.png": "5f7a19576de2e20ce6839ecbe0e5af0beb9a9f03517b4455629ba177ec485596",
+      "StoreAssets/WebsiteCaptures/Raw/mac/zh-Hans/02-document.png": "59cdecefbe6c7cba5942b2a000d5d755a6f48af78b42263161ed760747afc407"
+    },
+    "sha256": "bb9673c82dd7433843a943d6fb766c0b0edbdcdbec803c6fe3e7fc06105265f9",
+    "locale": "zh-Hans",
+    "source": "Artwork/zh-Hans/social.png",
+    "output": "zh-Hans/social.png"
+  },
+  {
+    "file": "zh-Hant/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/zh-Hant/03-listening.png": "b456af4bb5f91c791b77ba0bf55803a40ac76d3106215162933b985faeca33b1",
+      "StoreAssets/WebsiteCaptures/Raw/mac/zh-Hant/02-document.png": "29cb4585190abd1d9fef49b9abff2d62500e91a5b5a68aae85b06803f8942a9a"
+    },
+    "sha256": "08e566cd53074f34e9269a9c9b25c12369c977117e091db92367b710ad07f9db",
+    "locale": "zh-Hant",
+    "source": "Artwork/zh-Hant/social.png",
+    "output": "zh-Hant/social.png"
+  },
+  {
+    "file": "ja/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/ja/03-listening.png": "23163f94f62e85d2e7e3d0dd7f89073f561cef049389ebfb163853859bb67f2f",
+      "StoreAssets/WebsiteCaptures/Raw/mac/ja/02-document.png": "72479e16097c15afd6c2a1e16b70c81c2b5ce9af82ed8ab705f5bc0d04502629"
+    },
+    "sha256": "fe33b97796f428c41ed001e4f5b086a1357d4c858ecc2527ec80eb5b67f02137",
+    "locale": "ja",
+    "source": "Artwork/ja/social.png",
+    "output": "ja/social.png"
+  },
+  {
+    "file": "ko/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/ko/03-listening.png": "a902aac2390efc65db29cb7fa721a5832390fdff965d91c66f3344f07a404c89",
+      "StoreAssets/WebsiteCaptures/Raw/mac/ko/02-document.png": "ad7ff59961865643ad26c17cb5ca7f3e040647439737bbf113cc071af223d910"
+    },
+    "sha256": "6022b0859b28728222464b1633c4f1a26bf92f31440e01e01b826a1d07665909",
+    "locale": "ko",
+    "source": "Artwork/ko/social.png",
+    "output": "ko/social.png"
+  },
+  {
+    "file": "fr/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/fr/03-listening.png": "782887f99bd1b9ed460d610d954968ebadf86874da504ebcce8ea26306bdb2c2",
+      "StoreAssets/WebsiteCaptures/Raw/mac/fr/02-document.png": "6ebe4f89ca4976ee913c3bcc3c9fa6e81243f63127f57747b1e4f4b76777169b"
+    },
+    "sha256": "a59cf115264d06227effc8e97d544106c50ed842dd4ef014395d8e88209b7963",
+    "locale": "fr",
+    "source": "Artwork/fr/social.png",
+    "output": "fr/social.png"
+  },
+  {
+    "file": "de/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/de/03-listening.png": "79c8dfdd80979376db0e8dd871fd92588387509bad230115ea121b5c89f7e192",
+      "StoreAssets/WebsiteCaptures/Raw/mac/de/02-document.png": "da1d0e3f63630c43827a1f32b83057900e20981f93adb60bba168084b1a464f7"
+    },
+    "sha256": "2da5fee050002996642ce4f38b0f7aa323126e97785187cc00f7f89ca2233b2a",
+    "locale": "de",
+    "source": "Artwork/de/social.png",
+    "output": "de/social.png"
+  },
+  {
+    "file": "es/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/es/03-listening.png": "7b8d7a7c44e54b84b1f0f836e6f197bc997877ea3a9f6ab4d3cf4859f2779296",
+      "StoreAssets/WebsiteCaptures/Raw/mac/es/02-document.png": "88568047dbaa92323735852a456f0aaf489680709a47424cb4f0832641c76452"
+    },
+    "sha256": "1abb74da575c12a9dbb31e5f632e2e542c2dc0da006e2c0b0fbaf294b53ff3e4",
+    "locale": "es",
+    "source": "Artwork/es/social.png",
+    "output": "es/social.png"
+  },
+  {
+    "file": "pt-BR/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/pt-BR/03-listening.png": "408cfba7989d38ce336520e7997a68748e2c293b728048030a226adc76d9f96c",
+      "StoreAssets/WebsiteCaptures/Raw/mac/pt-BR/02-document.png": "34d8df1bcb5679e0c4ee0d3deef0045a03988f5cbb8d791e3c630e0dd80f89b8"
+    },
+    "sha256": "47f17706cbd51c92a3968202c9483bffd3a5876bde81ea0cca658b7337c326a9",
+    "locale": "pt-BR",
+    "source": "Artwork/pt-BR/social.png",
+    "output": "pt-BR/social.png"
+  },
+  {
+    "file": "it/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/it/03-listening.png": "01465f79e7139b2188f6c548cb64448b67e6ae6b0dc60911abb2204985febf18",
+      "StoreAssets/WebsiteCaptures/Raw/mac/it/02-document.png": "18dfa9dc3d3e550b2f312ad8b0f7f2ad7a7d94a8673a5710ed8ed15e32ef9d10"
+    },
+    "sha256": "2860c59fe1d63bec09e17840b1647aa943458ca343dc6b92656872b3de225422",
+    "locale": "it",
+    "source": "Artwork/it/social.png",
+    "output": "it/social.png"
+  },
+  {
+    "file": "ru/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/ru/03-listening.png": "8bbb32e67f3e6e1b51eefdca4529cdd7c5cffa30c069319fb953080c8bc700ce",
+      "StoreAssets/WebsiteCaptures/Raw/mac/ru/02-document.png": "6a3fa09a646b264c7bb16e1d5f6b02cb336eb64ac58c23f04c6d102fa8534b08"
+    },
+    "sha256": "b57a5f262331dafacb17bf96a12e2196678fe448e6266d706d9aef9eba5b4453",
+    "locale": "ru",
+    "source": "Artwork/ru/social.png",
+    "output": "ru/social.png"
+  },
+  {
+    "file": "ar/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/ar/03-listening.png": "4dc72273bddd1c26441dc6e810160a67b411e0a82fd7b5277657b0d233e6587f",
+      "StoreAssets/WebsiteCaptures/Raw/mac/ar/02-document.png": "e51daf62988eb688f88826a49efd465fc8b324f2ec72b52f89b6e0b9e2e99d56"
+    },
+    "sha256": "3e3d8cb32538d27bc9a134430352e6d99fad63d110b0b903cdbf2db78a79ce53",
+    "locale": "ar",
+    "source": "Artwork/ar/social.png",
+    "output": "ar/social.png"
+  },
+  {
+    "file": "hi/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/hi/03-listening.png": "f2346d58d04008dae7dd63486b4e7ebf303a27f34b5591fff3fbd2456051d523",
+      "StoreAssets/WebsiteCaptures/Raw/mac/hi/02-document.png": "e5fbbea6cbbf8ead6c1e36f52f38327dd34c23c075dcc02468008d65bcba3747"
+    },
+    "sha256": "f4606c618699b2e3049da7db49943652a4632aed00ca16846cd0de362538e936",
+    "locale": "hi",
+    "source": "Artwork/hi/social.png",
+    "output": "hi/social.png"
+  },
+  {
+    "file": "id/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/id/03-listening.png": "8593a75f1ca977c1032190984a1bceace43711c4c0ed4c2d671782ffb55d9c49",
+      "StoreAssets/WebsiteCaptures/Raw/mac/id/02-document.png": "7656c0af2ccec7416e3b474dc0500d6ad402fc20b576324b14294798cf2fbeb4"
+    },
+    "sha256": "d8c2746a75e2fcdcbdccd51b6016a8a7b3bb0c42526006ea978f488b227f00c6",
+    "locale": "id",
+    "source": "Artwork/id/social.png",
+    "output": "id/social.png"
+  },
+  {
+    "file": "tr/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/tr/03-listening.png": "f0cdd480190a2cdde09cda1251515822302a2c9696c8fdb829111ce15180a1e6",
+      "StoreAssets/WebsiteCaptures/Raw/mac/tr/02-document.png": "be311240d80257aad1418540acb0d4b55e5f31985bb3bf979880c8abb62f527a"
+    },
+    "sha256": "ebba3a38257904df5f78e6f980bb0e2bfacbf8ddc1102c475d3c28fe03619411",
+    "locale": "tr",
+    "source": "Artwork/tr/social.png",
+    "output": "tr/social.png"
+  },
+  {
+    "file": "vi/social.png",
+    "width": 1200,
+    "height": 630,
+    "sources": {
+      "StoreAssets/WebsiteCaptures/Raw/iphone/vi/03-listening.png": "13117d38c01765f1261e4ad821e667539f2bfc725ba80ae4fa516028c6bd7959",
+      "StoreAssets/WebsiteCaptures/Raw/mac/vi/02-document.png": "0c8fe7ce494cb1a57d24ede6c22256999186ed02864e18c9720d26a5d37b5d4d"
+    },
+    "sha256": "b3dd24d8ac26865499bfc7069cefdf7a50d92a1d61b34f01968643aa596bef63",
+    "locale": "vi",
+    "source": "Artwork/vi/social.png",
+    "output": "vi/social.png"
+  }
+]
