@@ -146,7 +146,7 @@ manifest 保留源 WAV 与发布文件的校验和、结果包名称及导入时
 它不是对历史二进制源码的反向认证。素材附有 Supertonic MIT 与 MOSS Apache-2.0 许可证副本，
 不代表 App 内其他模型和依赖的商业授权已完成核实。
 普通构建和 GitHub Pages 部署使用已提交的素材，不会运行 Xcode 或现场合成语音。
-2026-10-28，简体中文首个试听以 Yuewen 重新生成，替换原 Junhao 录音；
+2026-10-28，简体中文首个试听以 Zhiming 男声重新生成，替换原 Junhao 录音；
 文字、第二个声音和断句演示保持不变。该录音的独立生成来源记录在对应 sample 的 `provenance` 中。
 单条重录可运行 App 的 `testExportWebsiteMossSample`（通过 `TEST_RUNNER_PDF_SPEAKER_WEBSITE_SAMPLE`
 传入 `id`、`locale`、`language`、`voiceID`、`text` JSON），再使用：
